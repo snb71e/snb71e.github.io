@@ -191,11 +191,16 @@
         }
 
         .about h2 {
+            width: fit-content;
             margin: 0;
             font-size: clamp(24px, 3vw, 34px);
             line-height: 1;
             letter-spacing: -0.055em;
             font-weight: 800;
+            background: linear-gradient(transparent 58%, var(--highlight-soft) 58%);
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            padding: 0 3px;
         }
 
         .about p {
@@ -303,10 +308,15 @@
         }
 
         .section-header h3 {
+            width: fit-content;
             margin: 0;
             font-size: clamp(24px, 3vw, 34px);
             letter-spacing: -0.055em;
             line-height: 1;
+            background: linear-gradient(transparent 58%, var(--highlight-soft) 58%);
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            padding: 0 3px;
         }
 
         .section-header p {
