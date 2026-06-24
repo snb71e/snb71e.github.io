@@ -169,10 +169,10 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 28px;
+            gap: 30px;
             max-width: 820px;
             margin: 0 auto;
-            padding: 36px 34px 38px;
+            padding: 52px 42px 56px;
             border: 1px solid var(--card-border);
             background: var(--card);
             border-radius: 22px;
@@ -221,7 +221,7 @@
 
         .about p {
             max-width: 640px;
-            margin: 18px 0 0;
+            margin: 20px 0 0;
             color: var(--muted);
             font-size: 15px;
             line-height: 1.7;
@@ -236,6 +236,35 @@
             box-decoration-break: clone;
             -webkit-box-decoration-break: clone;
             padding: 0 2px;
+        }
+
+        .about-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .about-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid color-mix(in srgb, var(--highlight) 34%, transparent);
+            background: var(--highlight-soft);
+            color: color-mix(in srgb, var(--text) 72%, var(--highlight));
+            border-radius: var(--radius-md);
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 740;
+            line-height: 1;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .about-links a:hover {
+            transform: translateY(-1px);
+            border-color: color-mix(in srgb, var(--highlight) 56%, transparent);
         }
 
         .eyebrow {
@@ -542,7 +571,7 @@
             .about-card {
                 gap: 24px;
                 max-width: 100%;
-                padding: 28px 22px 30px;
+                padding: 38px 24px 42px;
             }
 
             .about-photo {
@@ -613,12 +642,18 @@
                     <img src="assets/profile.png" alt="Seonae Jeon profile photo" />
                 </div>
                 <div class="about-content">
-                    <h2 id="about-title">About</h2>
+                    <h2 id="about-title">Seonae Jeon</h2>
                     <p>
                         I am an undergraduate student in <strong>Computer Science and Engineering</strong> at <strong>DGIST</strong>.<br />
                         My research interests broadly lie in <strong>Physical AI</strong>, with a particular focus on
                         <strong>autonomous driving</strong> and the <strong>generalization of Vision-Language-Action models</strong>.
                     </p>
+                    <div class="about-links" aria-label="Profile links">
+                        <a href="assets/CV_SeonaeJeon_260624.pdf" target="_blank" rel="noreferrer">CV</a>
+                        <a href="mailto:seonae@dgist.ac.kr">Email</a>
+                        <a href="https://linkedin.com/in/seonae-jeon-17a211359" target="_blank" rel="noreferrer">LinkedIn</a>
+                        <a href="https://github.com/snb71e" target="_blank" rel="noreferrer">GitHub</a>
+                    </div>
                 </div>
             </div>
         </section>
