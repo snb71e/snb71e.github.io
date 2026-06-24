@@ -21,6 +21,8 @@
             --link-text: #312e81;
             --project-bg: #111827;
             --project-text: #ffffff;
+            --highlight: #DD9AAF;
+            --highlight-soft: rgba(221, 154, 175, 0.18);
             --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
             --radius-xl: 28px;
             --radius-lg: 20px;
@@ -42,6 +44,8 @@
             --link-text: #f8fafc;
             --project-bg: #ffffff;
             --project-text: #050505;
+            --highlight: #DD9AAF;
+            --highlight-soft: rgba(221, 154, 175, 0.22);
             --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
         }
 
@@ -206,6 +210,10 @@
         .about strong {
             color: var(--text);
             font-weight: 760;
+            background: linear-gradient(transparent 58%, var(--highlight-soft) 58%);
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            padding: 0 2px;
         }
 
         .eyebrow {
@@ -390,9 +398,9 @@
 
         .venue {
             width: fit-content;
-            border: 1px solid var(--card-border);
-            background: var(--bg-soft);
-            color: var(--muted);
+            border: 1px solid color-mix(in srgb, var(--highlight) 34%, transparent);
+            background: var(--highlight-soft);
+            color: color-mix(in srgb, var(--text) 72%, var(--highlight));
             border-radius: var(--radius-md);
             padding: 6px 9px;
             font-size: 11px;
@@ -419,9 +427,10 @@
         .authors strong {
             color: var(--text);
             font-weight: 820;
-            background: color-mix(in srgb, var(--accent) 9%, transparent);
+            background: var(--highlight-soft);
+            border: 1px solid color-mix(in srgb, var(--highlight) 30%, transparent);
             border-radius: 7px;
-            padding: 1px 4px;
+            padding: 1px 5px;
         }
 
         .paper-summary {
@@ -609,7 +618,7 @@
                         </p>
                         <p class="contribution-note">* Equal contribution &nbsp; · &nbsp; † Corresponding authors</p>
                         <div class="paper-links">
-                            <a class="project-link" href="https://dpt2026.github.io/" target="_blank" rel="noreferrer">Project Page →</a>
+                            <a class="project-link" href="https://snb71e.github.io/" target="_blank" rel="noreferrer">Project Page →</a>
                         </div>
                     </div>
                 </article>
