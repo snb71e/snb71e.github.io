@@ -1,10 +1,611 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Seonae Jeon - AI/CS researcher portfolio" />
     <title>Seonae Jeon</title>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f6f7f9;
+            --card: rgba(255, 255, 255, 0.82);
+            --card-border: rgba(15, 23, 42, 0.10);
+            --text: #0f172a;
+            --muted: #64748b;
+            --muted-2: #94a3b8;
+            --accent: #111827;
+            --accent-text: #ffffff;
+            --link-bg: #eef2ff;
+            --link-text: #312e81;
+            --project-bg: #111827;
+            --project-text: #ffffff;
+            --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 999px;
+            --max-width: 1120px;
+        }
+
+        html[data-theme="dark"] {
+            --bg: #050505;
+            --bg-soft: #0d0d0f;
+            --card: rgba(18, 18, 22, 0.78);
+            --card-border: rgba(255, 255, 255, 0.10);
+            --text: #f8fafc;
+            --muted: #a1a1aa;
+            --muted-2: #71717a;
+            --accent: #ffffff;
+            --accent-text: #050505;
+            --link-bg: rgba(255, 255, 255, 0.08);
+            --link-text: #f8fafc;
+            --project-bg: #ffffff;
+            --project-text: #050505;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.12), transparent 28%),
+                radial-gradient(circle at 85% 12%, rgba(14, 165, 233, 0.10), transparent 26%),
+                var(--bg);
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(100% - 40px, var(--max-width));
+            margin: 0 auto;
+        }
+
+        .profile-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(22px);
+            background: color-mix(in srgb, var(--bg) 76%, transparent);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .profile-inner {
+            width: min(100% - 40px, var(--max-width));
+            margin: 0 auto;
+            min-height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+        }
+
+        .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex: 0 0 auto;
+            border: 1px solid var(--card-border);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
+                var(--bg-soft);
+            display: grid;
+            place-items: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .identity {
+            min-width: 0;
+        }
+
+        .identity h1 {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.1;
+            font-weight: 760;
+            letter-spacing: -0.04em;
+        }
+
+        .identity p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .quick-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .quick-links a,
+        .theme-toggle {
+            border: 1px solid var(--card-border);
+            background: var(--card);
+            color: var(--text);
+            border-radius: var(--radius-md);
+            padding: 9px 13px;
+            font-size: 13px;
+            font-weight: 620;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .quick-links a:hover,
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            border-color: color-mix(in srgb, var(--text) 28%, transparent);
+        }
+
+        .hero {
+            padding: 110px 0 88px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            color: var(--muted);
+            font-size: 13px;
+            background: var(--card);
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.9);
+        }
+
+        .hero h2 {
+            max-width: 900px;
+            margin: 24px 0 0;
+            font-size: clamp(48px, 8vw, 92px);
+            line-height: 0.94;
+            letter-spacing: -0.075em;
+            font-weight: 820;
+        }
+
+        .hero h2 span {
+            color: var(--muted-2);
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 28px 0 0;
+            color: var(--muted);
+            font-size: clamp(17px, 2vw, 20px);
+            line-height: 1.6;
+            letter-spacing: -0.025em;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 34px;
+        }
+
+        .primary-cta,
+        .secondary-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            padding: 13px 18px;
+            font-weight: 720;
+            font-size: 14px;
+            border: 1px solid var(--card-border);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .primary-cta {
+            background: var(--accent);
+            color: var(--accent-text);
+        }
+
+        .secondary-cta {
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .primary-cta:hover,
+        .secondary-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 26px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 44px);
+            letter-spacing: -0.06em;
+            line-height: 1;
+        }
+
+        .section-header p {
+            max-width: 420px;
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.55;
+            font-size: 15px;
+        }
+
+        .publications {
+            padding: 20px 0 100px;
+        }
+
+        .publication-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .publication-card {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.34fr);
+            gap: 28px;
+            padding: 18px;
+            border: 1px solid var(--card-border);
+            background: var(--card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 180ms ease, border-color 180ms ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-3px);
+            border-color: color-mix(in srgb, var(--text) 24%, transparent);
+        }
+
+        .teaser {
+            min-height: 250px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            background:
+                linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(14, 165, 233, 0.08)),
+                var(--bg-soft);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        .teaser img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .teaser-placeholder {
+            width: 78%;
+            aspect-ratio: 1.42;
+            border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+            border-radius: 22px;
+            background: color-mix(in srgb, var(--bg) 76%, transparent);
+            display: grid;
+            place-items: center;
+            color: var(--muted);
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .teaser::after {
+            content: "";
+            position: absolute;
+            inset: auto -20% -45% -20%;
+            height: 65%;
+            background: radial-gradient(circle, rgba(255,255,255,0.28), transparent 58%);
+            pointer-events: none;
+        }
+
+        .paper-content {
+            padding: 10px 8px 8px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .venue {
+            width: fit-content;
+            border: 1px solid var(--card-border);
+            background: var(--bg-soft);
+            color: var(--muted);
+            border-radius: var(--radius-md);
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 720;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+
+        .paper-title {
+            margin: 0;
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.08;
+            letter-spacing: -0.055em;
+            font-weight: 820;
+        }
+
+        .authors {
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .authors strong {
+            color: var(--text);
+            font-weight: 820;
+            background: color-mix(in srgb, var(--accent) 9%, transparent);
+            border-radius: 7px;
+            padding: 1px 4px;
+        }
+
+        .paper-summary {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.65;
+            max-width: 620px;
+        }
+        .contribution-note {
+            margin: 12px 0 0;
+            color: var(--muted-2);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .paper-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .paper-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: var(--radius-md);
+            padding: 10px 13px;
+            font-size: 13px;
+            font-weight: 740;
+            border: 1px solid var(--card-border);
+            background: var(--link-bg);
+            color: var(--link-text);
+            transition: transform 180ms ease, border-color 180ms ease, opacity 180ms ease;
+        }
+
+        .paper-links a:hover {
+            transform: translateY(-1px);
+            border-color: color-mix(in srgb, var(--text) 30%, transparent);
+        }
+
+        .paper-links .project-link {
+            background: var(--project-bg);
+            color: var(--project-text);
+            padding-inline: 16px;
+        }
+
+        .footer {
+            padding: 42px 0 60px;
+            border-top: 1px solid var(--card-border);
+            color: var(--muted);
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 820px) {
+            .profile-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 16px 0;
+                gap: 14px;
+            }
+
+            .quick-links {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                padding: 72px 0 64px;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .publication-card {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .teaser {
+                min-height: 220px;
+            }
+
+            .paper-content {
+                padding: 4px 2px 6px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page,
+            .profile-inner {
+                width: min(100% - 28px, var(--max-width));
+            }
+
+            .quick-links a,
+            .theme-toggle {
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .publication-card {
+                border-radius: 22px;
+                padding: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello!</h1>
-    <p>Welcome to my personal homepage.</p>
+    <header class="profile-bar">
+        <div class="profile-inner">
+            <a class="profile-left" href="https://snb71e.github.io/" aria-label="Go to homepage">
+                <div class="avatar">
+                    <!-- Replace src with your cropped profile image path, e.g. assets/profile.jpg -->
+                    <img src="assets/profile.png" alt="Seonae Jeon profile photo" onerror="this.style.display='none'; this.parentElement.textContent='Photo';" />
+                </div>
+                <div class="identity">
+                    <h1>Seonae Jeon</h1>
+                    <p>AI Researcher · DGIST</p>
+                </div>
+            </a>
+
+            <nav class="quick-links" aria-label="Quick links">
+                <a href="https://snb71e.github.io/" target="_blank" rel="noreferrer">Home</a>
+                <a href="assets/CV_SeonaeJeon_260624.pdf" target="_blank" rel="noreferrer">CV</a>
+                <a href="mailto:seonae@dgist.ac.kr">Email</a>
+                <a href="https://linkedin.com/in/seonae-jeon-17a211359" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com/snb71e" target="_blank" rel="noreferrer">GitHub</a>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top" class="page">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="eyebrow">Embodied AI · Computer Vision · Robotics</div>
+            <h2 id="hero-title">Building visual intelligence for <span>prediction, planning, and embodied agents.</span></h2>
+            <p>
+                I work on AI systems that understand dynamic scenes, reason about interactions,
+                and support robust decision-making in long-horizon embodied tasks.
+            </p>
+            <div class="hero-actions">
+                <a class="primary-cta" href="#publications">View Publications</a>
+                <a class="secondary-cta" href="mailto:seonae@dgist.ac.kr">Get in touch</a>
+                <a class="secondary-cta" href="assets/CV_SeonaeJeon_260624.pdf" target="_blank" rel="noreferrer">Download CV</a>
+            </div>
+        </section>
+
+        <section id="publications" class="publications" aria-labelledby="publications-title">
+            <div class="section-header">
+                <h3 id="publications-title">Publications</h3>
+                <p>Selected work with visual-first summaries. Replace teaser images with your framework figures or qualitative results.</p>
+            </div>
+
+            <div class="publication-list">
+                <article class="publication-card">
+                    <div class="teaser">
+                        <img src="assets/dpt2026.png" alt="Teaser for Unified Prediction and Planning via Conflict-Aware Disjoint Parameter Training" />
+                    </div>
+
+                    <div class="paper-content">
+                        <div class="venue">ECCV 2026 · Accepted</div>
+                        <h4 class="paper-title">Unified Prediction and Planning via Conflict-Aware Disjoint Parameter Training</h4>
+                        <p class="authors">
+                            Taewon Seo<sup>1</sup>*, <strong>Seonae Jeon<sup>1</sup>*</strong>, Giwon Lee<sup>2</sup>*, Kuk-Jin Yoon<sup>2</sup>†, Daehee Park<sup>1</sup>†
+                        </p>
+                        <p class="paper-summary">
+                            A conflict-aware disjoint parameter training framework for unified prediction and planning,
+                            designed to reduce task interference and improve performance in multi-task autonomous driving models.
+                        </p>
+                        <p class="contribution-note">* Equal contribution &nbsp; · &nbsp; † Corresponding authors</p>
+                        <div class="paper-links">
+                            <a class="project-link" href="https://dpt2026.github.io/" target="_blank" rel="noreferrer">Project Page →</a>
+                            <a href="#" target="_blank" rel="noreferrer">Paper PDF</a>
+                            <a href="#" target="_blank" rel="noreferrer">Code</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page footer">
+        <span>© <span id="year"></span> Seonae Jeon</span>
+        <span>Designed for research-first storytelling.</span>
+    </footer>
+
+    <script>
+        const root = document.documentElement;
+        const toggle = document.querySelector('.theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme) {
+            root.dataset.theme = savedTheme;
+        }
+
+        function updateToggleLabel() {
+            toggle.textContent = root.dataset.theme === 'dark' ? 'Light' : 'Dark';
+        }
+
+        toggle.addEventListener('click', () => {
+            const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+            root.dataset.theme = nextTheme;
+            localStorage.setItem('theme', nextTheme);
+            updateToggleLabel();
+        });
+
+        updateToggleLabel();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
