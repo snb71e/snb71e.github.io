@@ -86,24 +86,25 @@
         .profile-inner {
             width: min(100% - 40px, var(--max-width));
             margin: 0 auto;
-            min-height: 88px;
+            min-height: 180px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
+            gap: 32px;
+            padding: 28px 0;
         }
 
         .profile-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 28px;
             min-width: 0;
         }
 
         .avatar {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
+            width: 132px;
+            height: 132px;
+            border-radius: 32px;
             overflow: hidden;
             flex: 0 0 auto;
             border: 1px solid var(--card-border);
@@ -114,6 +115,7 @@
             place-items: center;
             color: var(--muted);
             font-size: 12px;
+            box-shadow: var(--shadow);
         }
 
         .avatar img {
@@ -129,16 +131,16 @@
 
         .identity h1 {
             margin: 0;
-            font-size: 18px;
-            line-height: 1.1;
-            font-weight: 760;
-            letter-spacing: -0.04em;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 0.95;
+            font-weight: 820;
+            letter-spacing: -0.07em;
         }
 
         .identity p {
-            margin: 5px 0 0;
+            margin: 12px 0 0;
             color: var(--muted);
-            font-size: 13px;
+            font-size: 17px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -173,7 +175,7 @@
         }
 
         .hero {
-            padding: 110px 0 88px;
+            display: none;
         }
 
         .eyebrow {
@@ -278,7 +280,7 @@
         }
 
         .publications {
-            padding: 20px 0 100px;
+            padding: 72px 0 100px;
         }
 
         .publication-list {
@@ -455,8 +457,18 @@
             .profile-inner {
                 align-items: flex-start;
                 flex-direction: column;
-                padding: 16px 0;
-                gap: 14px;
+                padding: 22px 0;
+                gap: 20px;
+            }
+
+            .profile-left {
+                gap: 18px;
+            }
+
+            .avatar {
+                width: 96px;
+                height: 96px;
+                border-radius: 24px;
             }
 
             .quick-links {
@@ -508,7 +520,7 @@
 <body>
     <header class="profile-bar">
         <div class="profile-inner">
-            <a class="profile-left" href="https://snb71e.github.io/" aria-label="Go to homepage">
+            <div class="profile-left">
                 <div class="avatar">
                     <!-- Replace src with your cropped profile image path, e.g. assets/profile.jpg -->
                     <img src="assets/profile.png" alt="Seonae Jeon profile photo" onerror="this.style.display='none'; this.parentElement.textContent='Photo';" />
@@ -517,10 +529,9 @@
                     <h1>Seonae Jeon</h1>
                     <p>AI Researcher · DGIST</p>
                 </div>
-            </a>
+            </div>
 
             <nav class="quick-links" aria-label="Quick links">
-                <a href="https://snb71e.github.io/" target="_blank" rel="noreferrer">Home</a>
                 <a href="assets/CV_SeonaeJeon_260624.pdf" target="_blank" rel="noreferrer">CV</a>
                 <a href="mailto:seonae@dgist.ac.kr">Email</a>
                 <a href="https://linkedin.com/in/seonae-jeon-17a211359" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -531,20 +542,6 @@
     </header>
 
     <main id="top" class="page">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="eyebrow">Embodied AI · Computer Vision · Robotics</div>
-            <h2 id="hero-title">Building visual intelligence for <span>prediction, planning, and embodied agents.</span></h2>
-            <p>
-                I work on AI systems that understand dynamic scenes, reason about interactions,
-                and support robust decision-making in long-horizon embodied tasks.
-            </p>
-            <div class="hero-actions">
-                <a class="primary-cta" href="#publications">View Publications</a>
-                <a class="secondary-cta" href="mailto:seonae@dgist.ac.kr">Get in touch</a>
-                <a class="secondary-cta" href="assets/CV_SeonaeJeon_260624.pdf" target="_blank" rel="noreferrer">Download CV</a>
-            </div>
-        </section>
-
         <section id="publications" class="publications" aria-labelledby="publications-title">
             <div class="section-header">
                 <h3 id="publications-title">Publications</h3>
