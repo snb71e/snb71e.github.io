@@ -86,12 +86,12 @@
         .profile-inner {
             width: min(100% - 40px, var(--max-width));
             margin: 0 auto;
-            min-height: 180px;
+            min-height: 150px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 32px;
-            padding: 28px 0;
+            padding: 26px 0;
         }
 
         .profile-left {
@@ -102,9 +102,9 @@
         }
 
         .avatar {
-            width: 132px;
-            height: 132px;
-            border-radius: 32px;
+            width: 112px;
+            height: 112px;
+            border-radius: 28px;
             overflow: hidden;
             flex: 0 0 auto;
             border: 1px solid var(--card-border);
@@ -131,16 +131,16 @@
 
         .identity h1 {
             margin: 0;
-            font-size: clamp(34px, 5vw, 58px);
-            line-height: 0.95;
-            font-weight: 820;
-            letter-spacing: -0.07em;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 0.98;
+            font-weight: 800;
+            letter-spacing: -0.06em;
         }
 
         .identity p {
-            margin: 12px 0 0;
+            margin: 10px 0 0;
             color: var(--muted);
-            font-size: 17px;
+            font-size: 15px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -166,6 +166,16 @@
             line-height: 1;
             cursor: pointer;
             transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
         }
 
         .quick-links a:hover,
@@ -261,7 +271,7 @@
             align-items: flex-end;
             justify-content: space-between;
             gap: 24px;
-            margin-bottom: 26px;
+            margin-bottom: 34px;
         }
 
         .section-header h3 {
@@ -280,22 +290,22 @@
         }
 
         .publications {
-            padding: 72px 0 100px;
+            padding: 96px 0 120px;
         }
 
         .publication-list {
             display: grid;
-            gap: 18px;
+            gap: 28px;
         }
 
         .publication-card {
             display: grid;
-            grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.34fr);
-            gap: 28px;
-            padding: 18px;
+            grid-template-columns: minmax(220px, 0.74fr) minmax(0, 1.26fr);
+            gap: 24px;
+            padding: 16px;
             border: 1px solid var(--card-border);
             background: var(--card);
-            border-radius: var(--radius-xl);
+            border-radius: 24px;
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: transform 180ms ease, border-color 180ms ease;
@@ -307,8 +317,8 @@
         }
 
         .teaser {
-            min-height: 250px;
-            border-radius: var(--radius-lg);
+            min-height: 190px;
+            border-radius: 18px;
             border: 1px solid var(--card-border);
             background:
                 linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(14, 165, 233, 0.08)),
@@ -351,7 +361,7 @@
         }
 
         .paper-content {
-            padding: 10px 8px 8px 0;
+            padding: 6px 6px 6px 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -373,10 +383,10 @@
 
         .paper-title {
             margin: 0;
-            font-size: clamp(22px, 3vw, 34px);
-            line-height: 1.08;
-            letter-spacing: -0.055em;
-            font-weight: 820;
+            font-size: clamp(20px, 2.4vw, 28px);
+            line-height: 1.12;
+            letter-spacing: -0.05em;
+            font-weight: 800;
         }
 
         .authors {
@@ -395,10 +405,10 @@
         }
 
         .paper-summary {
-            margin: 18px 0 0;
+            margin: 14px 0 0;
             color: var(--muted);
-            font-size: 15px;
-            line-height: 1.65;
+            font-size: 14px;
+            line-height: 1.6;
             max-width: 620px;
         }
         .contribution-note {
@@ -466,9 +476,9 @@
             }
 
             .avatar {
-                width: 96px;
-                height: 96px;
-                border-radius: 24px;
+                width: 88px;
+                height: 88px;
+                border-radius: 22px;
             }
 
             .quick-links {
@@ -490,7 +500,7 @@
             }
 
             .teaser {
-                min-height: 220px;
+                min-height: 190px;
             }
 
             .paper-content {
@@ -536,7 +546,7 @@
                 <a href="mailto:seonae@dgist.ac.kr">Email</a>
                 <a href="https://linkedin.com/in/seonae-jeon-17a211359" target="_blank" rel="noreferrer">LinkedIn</a>
                 <a href="https://github.com/snb71e" target="_blank" rel="noreferrer">GitHub</a>
-                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">☾</button>
             </nav>
         </div>
     </header>
@@ -545,7 +555,6 @@
         <section id="publications" class="publications" aria-labelledby="publications-title">
             <div class="section-header">
                 <h3 id="publications-title">Publications</h3>
-                <p>Selected work with visual-first summaries. Replace teaser images with your framework figures or qualitative results.</p>
             </div>
 
             <div class="publication-list">
@@ -567,8 +576,6 @@
                         <p class="contribution-note">* Equal contribution &nbsp; · &nbsp; † Corresponding authors</p>
                         <div class="paper-links">
                             <a class="project-link" href="https://dpt2026.github.io/" target="_blank" rel="noreferrer">Project Page →</a>
-                            <a href="#" target="_blank" rel="noreferrer">Paper PDF</a>
-                            <a href="#" target="_blank" rel="noreferrer">Code</a>
                         </div>
                     </div>
                 </article>
@@ -578,7 +585,6 @@
 
     <footer class="page footer">
         <span>© <span id="year"></span> Seonae Jeon</span>
-        <span>Designed for research-first storytelling.</span>
     </footer>
 
     <script>
@@ -593,7 +599,7 @@
         }
 
         function updateToggleLabel() {
-            toggle.textContent = root.dataset.theme === 'dark' ? 'Light' : 'Dark';
+            toggle.textContent = root.dataset.theme === 'dark' ? '☀︎' : '☾';
         }
 
         toggle.addEventListener('click', () => {
